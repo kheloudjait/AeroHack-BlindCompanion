@@ -320,7 +320,8 @@ class AIDroneGuide:
     def connect_drone(self):
         """Connect to Tello drone"""
         try:
-            self.drone = Tello()
+            from simulator import SimulatedDrone
+            self.drone = SimulatedDrone()
             self.drone.connect()
             self.drone_connected = True
             battery = self.drone.get_battery()
@@ -440,8 +441,7 @@ def main():
     print("The drone needs to learn your voice.")
     
     while True:
-        name = input("Enter you
-        r name (or 'done' to finish): ").strip()
+        name = input("Enter your name (or 'done' to finish): ").strip()
         if name.lower() == 'done':
             break
         if name:
